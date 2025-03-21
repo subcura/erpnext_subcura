@@ -245,6 +245,3 @@ app_license = "mit"
 # Fixtures
 # --------
 
-fixtures = [
-    "Vertrag subcura",
-]
