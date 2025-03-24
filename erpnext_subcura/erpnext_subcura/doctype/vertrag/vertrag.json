@@ -1,0 +1,432 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "field:title",
+ "creation": "2025-03-24 11:22:27.004900",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "customer_section",
+  "title",
+  "customer",
+  "customer_name",
+  "company",
+  "column_break1",
+  "posting_date",
+  "posting_time",
+  "set_posting_time",
+  "section_break_inko",
+  "vertragsart",
+  "contact_and_address_tab",
+  "address_and_contact",
+  "customer_address",
+  "kundenadresse_adresszeile_1",
+  "kundenadresse_postleitzahl",
+  "kundenadresse_stadt",
+  "col_break4",
+  "contact_person",
+  "kundenkontakt_name",
+  "kundenkontakt_telefonnummer",
+  "kundenkontakt_email",
+  "company_address_section",
+  "company_address",
+  "unternehmensadresse_adresszeile_1",
+  "unternehmensadresse_postleitzahl",
+  "unternehmensadresse_stadt",
+  "company_addr_col_break",
+  "company_contact_person",
+  "unternehmenskontakt_name",
+  "unternehmenskontakt_position",
+  "unternehmenskontakt_telefonnummer",
+  "unternehmenskontakt_email",
+  "terms_tab",
+  "terms_section_break",
+  "tc_name",
+  "terms",
+  "connections_tab",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer_section",
+   "fieldtype": "Section Break",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "options": "fa fa-user"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "{customer_name}_{vertragsart}",
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "label": "Title",
+   "no_copy": 1,
+   "print_hide": 1,
+   "unique": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "oldfieldname": "customer",
+   "oldfieldtype": "Link",
+   "options": "Customer",
+   "print_hide": 1,
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "bold": 1,
+   "depends_on": "customer",
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Small Text",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "in_global_search": 1,
+   "label": "Customer Name",
+   "oldfieldname": "customer_name",
+   "oldfieldtype": "Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Company",
+   "oldfieldname": "company",
+   "oldfieldtype": "Link",
+   "options": "Company",
+   "print_hide": 1,
+   "remember_last_selected_value": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break1",
+   "fieldtype": "Column Break",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "oldfieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "in_list_view": 1,
+   "label": "Date",
+   "no_copy": 1,
+   "oldfieldname": "posting_date",
+   "oldfieldtype": "Date",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "posting_time",
+   "fieldtype": "Time",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "label": "Posting Time",
+   "no_copy": 1,
+   "oldfieldname": "posting_time",
+   "oldfieldtype": "Time",
+   "print_hide": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.docstatus==0",
+   "fieldname": "set_posting_time",
+   "fieldtype": "Check",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "label": "Edit Posting Date and Time",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "section_break_inko",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "vertragsart",
+   "fieldtype": "Select",
+   "label": "Vertragsart",
+   "options": "Informationen zu vorvertraglichen Services\u00e4tzen und GVE sowie ADV\nTest1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_and_address_tab",
+   "fieldtype": "Tab Break",
+   "label": "Address & Contact"
+  },
+  {
+   "fieldname": "address_and_contact",
+   "fieldtype": "Section Break",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "label": "Billing Address"
+  },
+  {
+   "fieldname": "customer_address",
+   "fieldtype": "Link",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "label": "Customer Address",
+   "options": "Address",
+   "print_hide": 1
+  },
+  {
+   "fetch_from": "customer_address.address_line1",
+   "fieldname": "kundenadresse_adresszeile_1",
+   "fieldtype": "Data",
+   "label": "Kundenadresse Adresszeile 1",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "customer_address.pincode",
+   "fieldname": "kundenadresse_postleitzahl",
+   "fieldtype": "Data",
+   "label": "Kundenadresse Postleitzahl",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "customer_address.city",
+   "fieldname": "kundenadresse_stadt",
+   "fieldtype": "Data",
+   "label": "Kundenadresse Stadt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_break4",
+   "fieldtype": "Column Break",
+   "hide_days": 1,
+   "hide_seconds": 1
+  },
+  {
+   "fieldname": "contact_person",
+   "fieldtype": "Link",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "in_global_search": 1,
+   "label": "Contact Person",
+   "link_filters": "[[\"Contact\",\"link_doctype\",\"=\",\"Customer\"]]",
+   "options": "Contact",
+   "print_hide": 1
+  },
+  {
+   "fetch_from": "contact_person.full_name",
+   "fieldname": "kundenkontakt_name",
+   "fieldtype": "Data",
+   "label": "Kundenkontakt Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "contact_person.phone",
+   "fieldname": "kundenkontakt_telefonnummer",
+   "fieldtype": "Data",
+   "label": "Kundenkontakt Telefonnummer",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "contact_person.email_id",
+   "fieldname": "kundenkontakt_email",
+   "fieldtype": "Data",
+   "label": "Kundenkontakt Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_address_section",
+   "fieldtype": "Section Break",
+   "label": "Company Address"
+  },
+  {
+   "fieldname": "company_address",
+   "fieldtype": "Link",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "label": "Company Address Name",
+   "options": "Address",
+   "print_hide": 1
+  },
+  {
+   "fetch_from": "company_address.address_line1",
+   "fieldname": "unternehmensadresse_adresszeile_1",
+   "fieldtype": "Data",
+   "label": "Unternehmensadresse Adresszeile 1",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "company_address.pincode",
+   "fieldname": "unternehmensadresse_postleitzahl",
+   "fieldtype": "Data",
+   "label": "Unternehmensadresse Postleitzahl",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "company_address.city",
+   "fieldname": "unternehmensadresse_stadt",
+   "fieldtype": "Data",
+   "label": "Unternehmensadresse Stadt",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company_addr_col_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company_contact_person",
+   "fieldtype": "Link",
+   "label": "Company Contact Person",
+   "link_filters": "[[\"Contact\",\"link_doctype\",\"=\",\"Company\"]]",
+   "options": "Contact",
+   "print_hide": 1
+  },
+  {
+   "fetch_from": "company_contact_person.full_name",
+   "fieldname": "unternehmenskontakt_name",
+   "fieldtype": "Data",
+   "label": "Unternehmenskontakt Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "company_contact_person.designation",
+   "fieldname": "unternehmenskontakt_position",
+   "fieldtype": "Data",
+   "label": "Unternehmenskontakt Position",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "company_contact_person.phone",
+   "fieldname": "unternehmenskontakt_telefonnummer",
+   "fieldtype": "Data",
+   "label": "Unternehmenskontakt Telefonnummer",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "company_contact_person.email_id",
+   "fieldname": "unternehmenskontakt_email",
+   "fieldtype": "Data",
+   "label": "Unternehmenskontakt Email",
+   "read_only": 1
+  },
+  {
+   "fieldname": "terms_tab",
+   "fieldtype": "Tab Break",
+   "label": "Terms"
+  },
+  {
+   "fieldname": "terms_section_break",
+   "fieldtype": "Section Break",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "label": "Terms and Conditions",
+   "oldfieldtype": "Section Break"
+  },
+  {
+   "fieldname": "tc_name",
+   "fieldtype": "Link",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "label": "Terms",
+   "oldfieldname": "tc_name",
+   "oldfieldtype": "Link",
+   "options": "Terms and Conditions",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "terms",
+   "fieldtype": "Text Editor",
+   "hide_days": 1,
+   "hide_seconds": 1,
+   "label": "Terms and Conditions Details",
+   "oldfieldname": "terms",
+   "oldfieldtype": "Text Editor"
+  },
+  {
+   "fieldname": "connections_tab",
+   "fieldtype": "Tab Break",
+   "label": "Connections",
+   "show_dashboard": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Vertrag",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "icon": "fa fa-file-text",
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-03-24 11:51:49.953982",
+ "modified_by": "Administrator",
+ "module": "erpnext_subcura",
+ "name": "Vertrag",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Accounts Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "All"
+  }
+ ],
+ "quick_entry": 1,
+ "search_fields": "posting_date, customer",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "timeline_field": "customer",
+ "title_field": "title",
+ "track_changes": 1,
+ "track_seen": 1
+}
