@@ -1,0 +1,13 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Vertrag subcura",
+  "enabled": 1,
+  "modified": "2025-03-21 16:46:36.527412",
+  "module": "erpnext_subcura",
+  "name": "auto_customer_address",
+  "script": "frappe.ui.form.on('Vertrag subcura', {\r\n    customer: function(frm) {\r\n        if (frm.doc.customer) {\r\n            frappe.db.get_value('Customer', frm.doc.customer, 'customer_primary_address')\r\n                .then(response => {\r\n                    let address_name = response.message.customer_primary_address;\r\n                    if (address_name) {\r\n                        frm.set_value('customer_address', address_name);\r\n                    } else {\r\n                        frm.set_value('customer_address', null);\r\n                    }\r\n                });\r\n        }\r\n    }\r\n});\r\n",
+  "view": "Form"
+ }
+]
