@@ -245,4 +245,4 @@ app_license = "mit"
 # Fixtures
 # --------
 
-fixtures = [{"doctype": "Client Script", "filters": [["module" , "in" , ("erpnext_subcura" )]]}]
+# fixtures = [{"doctype": "Client Script", "filters": [["module" , "in" , ("erpnext_subcura" )]]}]
