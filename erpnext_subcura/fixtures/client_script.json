@@ -1,0 +1,13 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Contract",
+  "enabled": 1,
+  "modified": "2025-03-25 16:02:14.802563",
+  "module": "erpnext_subcura",
+  "name": "Vertrag_auto_party",
+  "script": "frappe.ui.form.on('Contract', {\r\n    refresh: function(frm) {\r\n        frm.trigger('update_custom_fields');\r\n    },\r\n    party_type: function(frm) {\r\n        frm.trigger('update_custom_fields');\r\n    },\r\n    party_name: function(frm) {\r\n        frm.trigger('update_custom_fields');\r\n    },\r\n    update_custom_fields: function(frm) {\r\n        frappe.run_serially([\r\n            () => frappe.timeout(0.5), // Kurze Verzögerung, um sicherzustellen, dass alle Daten geladen sind\r\n            () => {\r\n                console.log('Party Type:', frm.doc.party_type);\r\n                console.log('Party Name:', frm.doc.party_name);\r\n                \r\n                if (frm.doc.party_type === 'Customer' && frm.doc.party_name) {\r\n                    frm.set_value('custom_kunde', frm.doc.party_name);\r\n                    frm.set_value('custom_lieferant', '');\r\n                    frm.set_value('custom_mitarbeiter', '');\r\n                    console.log('Custom Kunde gesetzt:', frm.doc.party_name);\r\n                } else if (frm.doc.party_type === 'Supplier' && frm.doc.party_name) {\r\n                    frm.set_value('custom_kunde', '');\r\n                    frm.set_value('custom_lieferant', frm.doc.party_name);\r\n                    frm.set_value('custom_mitarbeiter', '');\r\n                    console.log('Custom Lieferant gesetzt:', frm.doc.party_name);\r\n                } else if (frm.doc.party_type === 'Employee' && frm.doc.party_name) {\r\n                    frm.set_value('custom_kunde', '');\r\n                    frm.set_value('custom_lieferant', '');\r\n                    frm.set_value('custom_mitarbeiter', frm.doc.party_name);\r\n                    console.log('Custom Mitarbeiter gesetzt:', frm.doc.party_name);\r\n                } else {\r\n                    frm.set_value('custom_kunde', '');\r\n                    frm.set_value('custom_lieferant', '');\r\n                    frm.set_value('custom_mitarbeiter', '');\r\n                    console.log('Alle custom Felder geleert');\r\n                }\r\n                \r\n                frm.refresh_field('custom_kunde');\r\n                frm.refresh_field('custom_lieferant');\r\n                frm.refresh_field('custom_mitarbeiter');\r\n            }\r\n        ]);\r\n    }\r\n});\r\n",
+  "view": "Form"
+ }
+]
